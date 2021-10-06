@@ -3,10 +3,10 @@ import { Route, Switch } from "react-router-dom";
 import Auth from "../hoc/auth";
 // pages for this product
 import LandingPage from "./views/LandingPage/LandingPage.js";
+import LatestPage from "./views/LandingPage/LatestPage.js";
 import LoginPage from "./views/LoginPage/LoginPage.js";
 import RegisterPage from "./views/RegisterPage/RegisterPage.js";
 import NavBar from "./views/NavBar/NavBar";
-import Footer from "./views/Footer/Footer"
 
 //null   Anyone Can go inside
 //true   only logged in user can go inside
@@ -20,11 +20,11 @@ function App() {
         <Switch>
           {/* default route */}
           <Route exact path="/" component={Auth(LandingPage, null)} />
+          <Route exact path="/latest" component={Auth(LatestPage, null)} />
           <Route exact path="/login" component={Auth(LoginPage, false)} />
           <Route exact path="/register" component={Auth(RegisterPage, false)} />
         </Switch>
       </div>
-      <Footer />
     </Suspense>
   );
 }
