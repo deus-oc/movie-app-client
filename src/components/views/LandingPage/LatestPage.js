@@ -20,16 +20,20 @@ function LatestPage() {
     }, []);
 
     async function fetchDetails(endpoint){
-        let resMovie = await fetch(endpoint);
-        resMovie = await resMovie.json();
-        setMovie(resMovie);
-        setLoadingForMovie(false)
-        const movieId = resMovie.id;
-        setMovieid(movieId);
-        let resCast = await fetch(`${API_URL}movie/${movieId}/credits?api_key=${API_KEY}`);
-        resCast = await resCast.json();            
-        setCasts(resCast.cast);
-        setLoadingForCasts(false)
+        try{
+            let resMovie = await fetch(endpoint);
+            resMovie = await resMovie.json();
+            setMovie(resMovie);
+            setLoadingForMovie(false)
+            const movieId = resMovie.id;
+            setMovieid(movieId);
+            let resCast = await fetch(`${API_URL}movie/${movieId}/credits?api_key=${API_KEY}`);
+            resCast = await resCast.json();            
+            setCasts(resCast.cast);
+            setLoadingForCasts(false)    
+        } catch(err){
+            console.err(err);
+        }
     }
 
     return (
