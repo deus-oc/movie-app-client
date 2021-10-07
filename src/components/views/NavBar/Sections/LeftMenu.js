@@ -8,10 +8,10 @@ function LeftMenu(props) {
         <a href="/">Popular</a>
       </Menu.Item>
       <Menu.Item key="latest">
-        <a href="/latest">Latest</a>
+        <a href="/discover/latest">Latest</a>
       </Menu.Item>
       <Menu.Item key="favourites">
-        <a href="/favourites">Favourites</a>
+        <a href="/discover/favourites">Favourites</a>
       </Menu.Item>
     </Menu>
   )

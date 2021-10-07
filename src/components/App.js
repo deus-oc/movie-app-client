@@ -1,5 +1,5 @@
 import React, { Suspense } from 'react';
-import { Route, Switch } from "react-router-dom";
+import { Route, Switch, Redirect } from "react-router-dom";
 import Auth from "../hoc/auth";
 // pages for this product
 import LandingPage from "./views/LandingPage/LandingPage.js";
@@ -20,12 +20,13 @@ function App() {
       <div style={{ paddingTop: '69px', minHeight: 'calc(100vh - 80px)' }}>
         <Switch>
           {/* default route */}
-          <Route exact path="/" component={Auth(LandingPage, null)} />
-          <Route exact path="/latest" component={Auth(LatestPage, null)} />
+          <Route exact path="/"> <Redirect to="/discover/popular" /></Route>
+          <Route exact path="/discover/popular" component={Auth(LandingPage, null)} />
+          <Route exact path="/discover/latest" component={Auth(LatestPage, null)} />
           <Route exact path="/login" component={Auth(LoginPage, false)} />
           <Route exact path="/register" component={Auth(RegisterPage, false)} />
           <Route exact path="/register" component={Auth(RegisterPage, false)} />
-          <Route exact path="/favourites" component={Auth(Favouritepage, true)} />
+          <Route exact path="/discover/favourites" component={Auth(Favouritepage, true)} />
           <Route exact path="/movie/:movieId" component={Auth(MovieDetail, null)} />
         </Switch>
       </div>
