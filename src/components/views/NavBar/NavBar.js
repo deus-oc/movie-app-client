@@ -18,7 +18,7 @@ function NavBar() {
   return (
     <nav className="menu" style={{ position: 'fixed', zIndex: 5, width: '100%' }}>
       <div className="menu__logo">
-        <a href="/">Logo</a>
+        <a title='Capital Movies' href="/">CM</a>
       </div>
       <div className="menu__container">
         <div className="menu_left">
@@ -32,10 +32,10 @@ function NavBar() {
           type="primary"
           onClick={showDrawer}
         >
-          <Icon type="align-right" />
+          <Icon type="menu" />
         </Button>
         <Drawer
-          title="Basic Drawer"
+          title="Dashboard"
           placement="right"
           className="menu_drawer"
           closable={false}

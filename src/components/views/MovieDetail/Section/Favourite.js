@@ -7,13 +7,24 @@ import axios from 'axios';
 
 function Favourite(props) {
     const user = useSelector(state => state.user)
-    const variables = {
-        movieId: props.movieId,
-        userFrom: props.userFrom,
-        movieTitle: props.movieInfo.title,
-        moviePost: props.movieInfo.backdrop_path,
-        movieRunTime: props.movieInfo.runtime
-    } 
+    let variables;
+    if(props.favPage){
+        variables = {
+            movieId: props.movieInfo.movieId,
+            userFrom: props.movieInfo.userFrom,
+            movieTitle: props.movieInfo.movieTitle,
+            moviePost: props.movieInfo.moviePost,
+            movieRunTime: props.movieInfo.movieRunTime
+        }
+    } else {
+        variables = {
+            movieId: props.movieId,
+            userFrom: props.userFrom,
+            movieTitle: props.movieInfo.title,
+            moviePost: props.movieInfo.backdrop_path,
+            movieRunTime: props.movieInfo.runtime
+        }     
+    }
     const [FavouriteNumber, setFavouriteNumber] = useState(0)
     const [Favourited, setFavourited] = useState(false);
 
