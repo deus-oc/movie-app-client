@@ -4,11 +4,13 @@ import { API_URL, API_KEY, IMAGE_BASE_URL, POSTER_SIZE } from '../../apiConfig'
 import MainImage from './Section/MainImage';
 import GridCard from './Section/GridCard';
 import MovieInfo from '../MovieDetail/Section/MovieInfo';
+import Favourite from '../MovieDetail/Section/Favourite';
 
 const {Title} = Typography;
 const path = `${IMAGE_BASE_URL}${POSTER_SIZE}`;
 
 function LatestPage() {
+    const [movieid, setMovieid] = useState(null);
     const [Movie, setMovie] = useState([])
     const [Casts, setCasts] = useState([])
     const [LoadingForMovie, setLoadingForMovie] = useState(true)
@@ -23,6 +25,7 @@ function LatestPage() {
         setMovie(resMovie);
         setLoadingForMovie(false)
         const movieId = resMovie.id;
+        setMovieid(movieId);
         let resCast = await fetch(`${API_URL}movie/${movieId}/credits?api_key=${API_KEY}`);
         resCast = await resCast.json();            
         setCasts(resCast.cast);
@@ -48,9 +51,9 @@ function LatestPage() {
             {/* Body */}
             <div style={{ width: '85%', margin: '1rem auto' }}>
 
-                {/* <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
-                    <Favorite movieInfo={Movie} movieId={movieId} userFrom={localStorage.getItem('userId')} />
-                </div> */}
+                <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
+                    {movieid && <Favourite movieInfo={Movie} movieId={movieid} userFrom={localStorage.getItem('userId')} />}
+                </div>
 
 
                 {/* Movie Info */}
