@@ -10,23 +10,9 @@ const { Title } = Typography;
 
 function LoginPage(props) {
   const dispatch = useDispatch();
-  const rememberMeChecked = localStorage.getItem("rememberMe") ? true : false;
-
   const [formErrorMessage, setFormErrorMessage] = useState('')
-  const [rememberMe, setRememberMe] = useState(rememberMeChecked)
-
-  const handleRememberMe = () => {
-    setRememberMe(!rememberMe)
-  };
-
-  const initialEmail = localStorage.getItem("rememberMe") ? localStorage.getItem("rememberMe") : '';
-
   return (
     <Formik
-      initialValues={{
-        email: initialEmail,
-        password: '',
-      }}
       validationSchema={Yup.object().shape({
         email: Yup.string()
           .email('Email is invalid')
@@ -46,11 +32,6 @@ function LoginPage(props) {
             .then(response => {
               if (response.payload.loginSuccess) {
                 window.localStorage.setItem('userId', response.payload.userId);
-                if (rememberMe === true) {
-                  window.localStorage.setItem('rememberMe', values.id);
-                } else {
-                  localStorage.removeItem('rememberMe');
-                }
                 props.history.push("/");
               } else {
                 setFormErrorMessage('Check out your Account or Password again')
@@ -125,10 +106,6 @@ function LoginPage(props) {
               )}
 
               <Form.Item>
-                <Checkbox id="rememberMe" onChange={handleRememberMe} checked={rememberMe} >Remember me</Checkbox>
-                <a className="login-form-forgot" href="/reset_user" style={{ float: 'right' }}>
-                  forgot password
-                  </a>
                 <div>
                   <Button type="primary" htmlType="submit" className="login-form-button" style={{ minWidth: '100%' }} disabled={isSubmitting} onSubmit={handleSubmit}>
                     Log in
