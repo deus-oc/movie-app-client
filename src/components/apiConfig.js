@@ -7,5 +7,5 @@ export const BACKDROP_SIZE = 'w1280'
 export const IMAGE_SIZE = 'w1280'
 // w92, w154, w185, w342, w500, w780, original
 export const POSTER_SIZE = 'w500'
-// export const URL = 'https://capitalmovieapp.herokuapp.com';
-export const URL = 'http://localhost:5000';
+export const URL = 'https://capitalmovieapp.herokuapp.com';
+// export const URL = 'http://localhost:5000';
