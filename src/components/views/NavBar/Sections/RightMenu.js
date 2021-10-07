@@ -5,6 +5,8 @@ import axios from 'axios';
 import { USER_SERVER } from '../../../Config';
 import { withRouter } from 'react-router-dom';
 import { useSelector } from "react-redux";
+import { Link } from 'react-router-dom';
+
 
 function RightMenu(props) {
   const user = useSelector(state => state.user)
@@ -23,10 +25,10 @@ function RightMenu(props) {
     return (
       <Menu mode={props.mode}>
         <Menu.Item key="mail">
-          <a href="/login">Login</a>
+          <Link to={"/login"}>Login</Link>
         </Menu.Item>
         <Menu.Item key="app">
-          <a href="/register">Register</a>
+          <Link to="/register">Register</Link>
         </Menu.Item>
       </Menu>
     )
