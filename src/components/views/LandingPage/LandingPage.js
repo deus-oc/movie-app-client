@@ -22,10 +22,11 @@ function LandingPage() {
 
     useEffect(() => {
         window.addEventListener("scroll", handleScroll);
-    }, [])
+    },[])
 
 
     const loadMoreItems = () => {
+        console.log("In loadMoreItems");
         setLoading(true);
         fetchMovies(`${API_URL}movie/popular?api_key=${API_KEY}&language=en-US&page=${currentPage + 1}`);
     }
@@ -37,13 +38,14 @@ function LandingPage() {
         const docHeight = Math.max(body.scrollHeight, body.offsetHeight, html.clientHeight, html.scrollHeight, html.offsetHeight);
         const windowBottom = windowHeight + window.pageYOffset;
         if (windowBottom >= docHeight - 1) {
-            buttonRef.current.click();
+            if(buttonRef.current) buttonRef.current.click();
         }
     }
 
     async function fetchMovies(endpoint){
         let res = await fetch(endpoint);
         res = await res.json();
+        console.log()
         setMovies([...movies, ...res.results]);
         setMainMovieImage(MainMovieImage || res.results[0]);
         setCurrentPage(res.page);
