@@ -18,7 +18,7 @@ function LandingPage() {
 
     useEffect(() => {
         fetchMovies(`${API_URL}movie/popular?api_key=${API_KEY}&language=en-US&page=1`);
-    }, []);
+    },[]); // eslint-disable-line react-hooks/exhaustive-deps
 
     useEffect(() => {
         window.addEventListener("scroll", handleScroll);

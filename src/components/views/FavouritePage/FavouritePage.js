@@ -17,13 +17,12 @@ const Favouritepage = () => {
 
     useEffect(() => {
         fetchFavoredMovie()
-    }, [])
+    },[]) // eslint-disable-line react-hooks/exhaustive-deps
 
     const fetchFavoredMovie = () => {
         axios.post('/api/favourite/getFavouredMovie', variables)
             .then(response => {
                 if (response.data.success) {
-                    console.log(response.data.favourites)
                     setFavourites(response.data.favourites)
                     setLoading(false)
                 } else {
@@ -39,6 +38,7 @@ const Favouritepage = () => {
             <div style={{width: '85%', margin: '1rem auto'}}>
                 <Title level={2}> Favourites </Title>
                 <hr />
+                <br />
                 <Row gutter={[16, 16]}>
                     {!Loading && Favourites.map((movie, index) => (
                         <Col span={8} key={'favmovies' + index}>

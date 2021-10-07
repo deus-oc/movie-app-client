@@ -47,8 +47,7 @@ function Favourite(props) {
                     alert('Failed to get Favourite Information')
                 }
             })
-
-    }, [])
+    },[]) // eslint-disable-line react-hooks/exhaustive-deps
 
     const onClickFavourite = () => {
         if (user.userData && !user.userData.isAuth) {
@@ -83,7 +82,7 @@ function Favourite(props) {
 
     return (
         <>
-            <Button danger onClick={onClickFavourite} disabled={user.userData && !user.userData.isAuth} > {!Favourited ? "Favourite " : "!Favourite "} {user.userData && user.userData.isAuth ? FavouriteNumber: ''}</Button>
+            <Button onClick={onClickFavourite} disabled={user.userData && !user.userData.isAuth} > {!Favourited ? "Favourite " : "!Favourite "} {user.userData && user.userData.isAuth ? FavouriteNumber: ''}</Button>
         </>
     )
 }

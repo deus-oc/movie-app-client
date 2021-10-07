@@ -19,9 +19,9 @@ function MovieDetail(props) {
     useEffect(() => {
         let endpointForMovieInfo = `${API_URL}movie/${movieId}?api_key=${API_KEY}&language=en-US`;
         fetchDetailInfo(endpointForMovieInfo)
-    }, [])
+        },[]) // eslint-disable-line react-hooks/exhaustive-deps
 
-    const fetchDetailInfo = (endpoint) => {
+    function fetchDetailInfo(endpoint) {
 
         fetch(endpoint)
             .then(result => result.json())
@@ -49,7 +49,7 @@ function MovieDetail(props) {
                 <MainImage
                     image={`${IMAGE_BASE_URL}${IMAGE_SIZE}${Movie.backdrop_path}`}
                     title={Movie.original_title}
-                    text={Movie.overview}
+                    text={Movie.overview} 
                 />
                 :
                 <div>loading...</div>
