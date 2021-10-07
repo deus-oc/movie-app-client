@@ -25,8 +25,7 @@ function App() {
           <Route exact path="/login" component={Auth(LoginPage, false)} />
           <Route exact path="/register" component={Auth(RegisterPage, false)} />
           <Route exact path="/register" component={Auth(RegisterPage, false)} />
-          {/* experimental NULL here below */}
-          <Route exact path="/favourites" component={Auth(Favouritepage, null)} />
+          <Route exact path="/favourites" component={Auth(Favouritepage, true)} />
           <Route exact path="/movie/:movieId" component={Auth(MovieDetail, null)} />
         </Switch>
       </div>

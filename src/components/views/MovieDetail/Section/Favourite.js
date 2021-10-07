@@ -83,7 +83,7 @@ function Favourite(props) {
 
     return (
         <>
-            <Button onClick={onClickFavourite} > {!Favourited ? "Favourite " : "!Favourite "} {user.userData && user.userData.isAuth ? FavouriteNumber: ''}</Button>
+            <Button danger onClick={onClickFavourite} disabled={user.userData && !user.userData.isAuth} > {!Favourited ? "Favourite " : "!Favourite "} {user.userData && user.userData.isAuth ? FavouriteNumber: ''}</Button>
         </>
     )
 }
