@@ -1,8 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import { Typography, Row, Card, Col } from 'antd';
-import {IMAGE_BASE_URL, POSTER_SIZE } from '../../apiConfig';
+import {IMAGE_BASE_URL, POSTER_SIZE, URL } from '../../apiConfig';
 import axios from 'axios';
-import './FavouritePage.css';
 import Favourite from '../MovieDetail/Section/Favourite';
 
 const {Title} = Typography;
@@ -20,7 +19,7 @@ const Favouritepage = () => {
     },[]) // eslint-disable-line react-hooks/exhaustive-deps
 
     const fetchFavoredMovie = () => {
-        axios.post('/api/favourite/getFavouredMovie', variables)
+        axios.post(`${URL}/api/favourite/getFavouredMovie`, variables)
             .then(response => {
                 if (response.data.success) {
                     setFavourites(response.data.favourites)

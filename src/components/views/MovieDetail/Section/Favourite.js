@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { Button } from 'antd';
 import { useSelector } from 'react-redux';
+import {URL} from '../../../apiConfig';
 import axios from 'axios';
 
 
@@ -30,7 +31,7 @@ function Favourite(props) {
 
     useEffect(() => {
 
-        axios.post('/api/favourite/favouriteNumber', variables)
+        axios.post(`${URL}/api/favourite/favouriteNumber`, variables)
             .then(response => {
                 if (response.data.success) {
                     setFavouriteNumber(response.data.subscribeNumber)
@@ -39,7 +40,7 @@ function Favourite(props) {
                 }
             })
 
-        axios.post('/api/favourite/favourited', variables)
+        axios.post(`${URL}/api/favourite/favourited`, variables)
             .then(response => {
                 if (response.data.success) {
                     setFavourited(response.data.subcribed)
@@ -56,7 +57,7 @@ function Favourite(props) {
 
         if (Favourited) {
             //when we are already subscribed 
-            axios.post('/api/favourite/removeFromFavourite', variables)
+            axios.post(`${URL}/api/favourite/removeFromFavourite`, variables)
                 .then(response => {
                     if (response.data.success) {
                         setFavouriteNumber(FavouriteNumber - 1)
@@ -68,7 +69,7 @@ function Favourite(props) {
 
         } else {
             // when we are not subscribed yet
-            axios.post('/api/favourite/addToFavourite', variables)
+            axios.post(`${URL}/api/favourite/addToFavourite`, variables)
                 .then(response => {
                     if (response.data.success) {
                         setFavouriteNumber(FavouriteNumber + 1)
